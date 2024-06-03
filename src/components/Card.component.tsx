@@ -1,9 +1,16 @@
-import React from "react";
+import React, { ReactNode } from "react";
+import Title from "./Title.component";
 
-export default function Card() {
+interface CardProps {
+    height: string;
+    width: string;
+    children: ReactNode;
+}
+
+export default function Card({height, width, children}: CardProps) {
     return (
-        <div>
-        <h1>Card</h1>
+        <div className="card" style={{height: height, width: width}} > 
+            {children}
         </div>
     );
 }

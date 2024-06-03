@@ -1,9 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-export default function Title() {
+interface TitleProps {
+    children: ReactNode;
+}
+
+export default function Title({ children }: TitleProps) {
     return (
-        <div>
-        <h1>Title</h1>
-        </div>
+        <div className="title">{children}</div>
     );
 }

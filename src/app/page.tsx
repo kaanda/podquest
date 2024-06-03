@@ -2,20 +2,15 @@ import Footer from '@/components/Footer.component';
 import Header from '@/components/Header.component';
 import Content from '@/components/Content.component';
 import React from 'react';
+import Title from '@/components/Title.component';
+import '../styles/styles.css';
 
 export default function Home() {
   return (
-    <div className='min-h-screen 
-                    min-w-full 
-                    flex items-center justify-center
-                    bg-white p-4'>
-      <div className='h-screen
-                       w-screen 
-                       flex-col
-                       bg-slate-100 
-                       p-8 
-                       rounded-3xl shadow-lg'>
+    <div className='page'>
+      <div className='home'>
         <Header />
+        <Title><strong>Descobertas de Podcasts</strong></Title>
         <Content />
         <Footer />
       </div>
