@@ -22,6 +22,7 @@
     justify-content: flex-start;
     width: 99%;
     height: 99%;
+    margin: 5px;
     background-color: #f2f2f2;
     border-radius: 2.5rem;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.055);
@@ -30,6 +31,7 @@
 .header{
     display: flex;
     flex-direction: row;
+    justify-items: flex-start;
     width: 100%;
     height: 10%;
     padding: 15px;
@@ -39,7 +41,7 @@
     display: flex;
     font-size: 14px;
     font-weight: 600;
-    padding: 15px;
+    /* padding: 15px; */
 }
 
 .card{
@@ -61,27 +63,9 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     padding-top: 5px;
 }
-
-/* .card-imgs{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-} */
-
-/* .card-title{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-} */
-
-/* .card-description{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-} */
 
 .card img{
     width: 100px;
@@ -89,31 +73,60 @@
     border-radius: 10%;
 }
 
-.image-list{
+
+.card-trending-week{
     display: flex;
-    flex-direction: column;;
+    justify-content: flex-start;
+    flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    height: auto;
+    padding: 15px 15px 0px 15px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
-.content-image{
+.content-image {
     display: flex;
-    flex-direction: row;
-    flex: 1 0 95vh;
-    padding: 0px 15px 0px 15px;
+    overflow-x: hidden;
+    padding: 0 15px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
-.image-list h2{
+.image-list {
+    flex: 0 0 auto;
+    width: 100px;
+    margin: 0px 10px 0px 0px;
+}
+.image-list img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Adiciona bordas arredondadas às imagens */
+}
+
+.image-list h2 {
     font-size: 10px;
     font-weight: 600;
-    padding: 5px;
+    padding: 5px 0;
 }
-.image-list p{
-    /* justify-items: flex-end; */
-    font-size: 8px;
-    font-weight: 600;
-    padding-left: 5px;
+
+.image-list p {
+    font-size: 10px;
+    margin: 0;
+    white-space: pre-wrap;
+    display: flex;
+}
+
+.image-list .flex {
     align-items: center;
+}
+
+.scroll-arrows{
+    display: flex;
+    flex: 2;
+    justify-content: flex-end;
+    /* margin: 5px; */
 }
 
 .card-icons-arrow {
@@ -121,7 +134,8 @@
     flex: 1;
     justify-content: flex-end;
     align-items: center;
-    font-size: 8px;
+    width: 100%;
+    height: 25px;
     margin: 0;
     padding: 0;
 }

@@ -1,3 +1,6 @@
+
+
+import ScrollArrows from "@/utils/ScrollArrows";
 import { ClockIcon } from "@heroicons/react/16/solid";
 import React from "react";
 
@@ -15,7 +18,9 @@ interface ImageListProps {
 
 export default function ImageList({ images }: ImageListProps) {
     return (
-        <div className="content-image">
+        <>
+            {/* <ScrollArrows /> */}
+            <div className="content-image">
             {images.map((image, index) => (
                 <div className="image-list" key={index}>
                     <img src={image.src} alt={image.alt} />
@@ -25,5 +30,6 @@ export default function ImageList({ images }: ImageListProps) {
                 </div>
             ))}
         </div>
+        </>
     );
 }
