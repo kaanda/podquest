@@ -21,11 +21,11 @@ const ScrollArrows = () => {
 
     return (
         <div className="scroll-arrows">
-            <button id="arrow-left" className="w-6 h-5 m-1 bg-custom-gray rounded">
+            <button id="arrow-left" className="arrow">
                 <ChevronLeftIcon className="w-5 h-5" />
             </button>  
             
-            <button id="arrow-right" className="w-6 h-5 m-1 bg-custom-gray rounded">
+            <button id="arrow-right" className="arrow">
                 <ChevronRightIcon className="w-5 h-5" />
             </button>
         </div>
