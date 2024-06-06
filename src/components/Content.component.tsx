@@ -5,19 +5,25 @@ import ImageList from "./ImageList.component";
 import Images from "../service/Images.json"
 import TrendingWeek from "./TrendingWeek.component";
 import ScrollArrows from "../utils/ScrollArrows"
+import TabContent from "./Tab.component";
 
 export default function Content() {
     return (
         <div className="content">
             <div className="content-left">
 
-                <Card height="35vh" width="31%">
+                <Card height="35vh" width="21%">
                     <div className="card-trending-week">
                         <h1>Destaques da Semana</h1>
-                        <TrendingWeek imageUrl="https://via.placeholder.com/300" />
+                        <TrendingWeek 
+                            imageUrl="./img/gotan.jpg" 
+                            title="Gotan Project" 
+                            description="Banda de música eletrônica" 
+                            totalDuration={60} 
+                        />
                     </div>
                 </Card> 
-                <Card height="35vh" width="57%">
+                <Card height="35vh" width="67%">
                     <div className="card-title-select">
                         <Title>Destaques Podcasts em</Title>
                         <select className="select">
@@ -34,6 +40,7 @@ export default function Content() {
                 </Card> 
                 <Card height="45vh" width="90%">
                     <Title>Podcasts Populares</Title>
+                    <TabContent />
                 </Card>   
             </div>
 
@@ -41,7 +48,7 @@ export default function Content() {
                 <Card height="45vh" width="300px">
                     <Title>Tocando Agora</Title>
                 </Card> 
-                <Card height="40vh" width="300px">
+                <Card height="35vh" width="300px">
                     <Title>Tocados Recentemente</Title>
                 </Card> 
             </div>
