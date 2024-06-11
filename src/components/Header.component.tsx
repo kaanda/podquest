@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid"; // Verifique a versão correta
 import { BellIcon } from "@heroicons/react/24/outline";
@@ -5,6 +6,11 @@ import DropdownMenu from "./DropdownMenu.component";
 
 
 export default function Header() {
+
+    const handleAlert = () => {
+       alert("Você tem *** notificações");
+    }
+
     return (
         <div className="header">
             <div className="relative ml-[50px]">
@@ -17,10 +23,10 @@ export default function Header() {
                     className="block w-full pl-10 pr-3 py-2 rounded-md shadow-sm focus:outline-none sm:text-sm"
                 />
             </div>
-            {/* <div className="w-8 h-[2.2rem] ml-1 bg-white rounded flex items-center justify-center"> */}
-            {/* </div> */}
             <div className="dropdown-menu">
-                <BellIcon className="w-8 h-8 mt-[2px] bg-white rounded flex items-center justify-center" />
+            <button onClick={() => handleAlert()}>
+                <BellIcon className="w-8 h-8 mt-[2px]"/>
+            </button>
                 <DropdownMenu />
             </div>
         </div>

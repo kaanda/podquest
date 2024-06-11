@@ -1,5 +1,5 @@
-import { ClockIcon } from "@heroicons/react/16/solid";
 import React from "react";
+import { ClockIcon } from "@heroicons/react/16/solid";
 
 interface Image {
     src: string;
@@ -14,8 +14,9 @@ interface ImageListProps {
 }
 
 export default function ImageList({ images }: ImageListProps) {
+
     return (
-            <div className="content-image">
+        <>
             {images.map((image, index) => (
                 <div className="image-list" key={index}>
                     <img src={image.src} alt={image.alt} />
@@ -24,6 +25,6 @@ export default function ImageList({ images }: ImageListProps) {
                     <p><ClockIcon className="w-3 h-3 mr-1" />{image.totalDuration} min</p>
                 </div>
             ))}
-        </div>
+        </>
     );
 }
