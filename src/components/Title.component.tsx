@@ -2,10 +2,11 @@ import React, { ReactNode } from "react";
 
 interface TitleProps {
     children: ReactNode;
+    className?: string;
 }
 
-export default function Title({ children }: TitleProps) {
+export default function Title({ children, className }: TitleProps) {
     return (
-        <div className="title">{children}</div>
+        <div className={className ? className : "title-left"}>{children}</div>
     );
 }

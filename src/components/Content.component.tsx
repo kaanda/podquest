@@ -2,12 +2,13 @@
 import React, { useRef } from "react";
 import Title from "./Title.component";
 import Card from "./Card.component";
-import ImageList from "./ImageList.component";
-import Images from "../service/Images.json"
+import HighlightsList from "./HighlightsList.component";
+import ImagesDestaques from "../service/Destaques.json";
+import PlayNow from "../service/PlayNow.json";
 import TrendingWeek from "./TrendingWeek.component";
 import TabContent from "./Tab.component";
 import ScrollArrows from "@/utils/ScrollArrows";
-import { BriefcaseIcon, HeartIcon, SparklesIcon } from "@heroicons/react/20/solid";
+import PlayingNow from "./PlayingNow.component";
 
 export default function Content() {
 
@@ -28,69 +29,52 @@ export default function Content() {
     return (
         <div className="content">
             <div className="content-left">
-
-                <Card height="35vh" width="21%">
+                <Card height="30vh" width="21%">
                     <div className="card-trending-week">
                         <h1>Destaques da Semana</h1>
                         <TrendingWeek 
-                            imageUrl="./img/gotan.jpg" 
+                            imageUrl="./img/destaques/escafandro.png"
                             title="Gotan Project" 
                             description="Banda de música eletrônica" 
                             totalDuration={60} 
                         />
                     </div>
                 </Card> 
-                <Card height="35vh" width="67%">
+
+                <Card height="30vh" width="67%">
                     <div className="card-title-select" >
                         <Title>Destaques Podcasts em</Title>
                         <select className="select">
-                            <option value="mpb">SciCast</option>
-                            <option value="jazz">Educação</option>
-                            <option value="rock">Business</option>
+                            <option value="todos">Todos</option>
+                            <option value="scicast">SciCast</option>
+                            <option value="educacao">Educação</option>
+                            <option value="business">Business</option>
                             <option value="inspiracao">Inspiração</option>
-                        </select>                    
-                        
-                <ScrollArrows onLeftClick={handleScrollLeft} onRightClick={handleScrollRight} />
+                        </select>                 
+                        <ScrollArrows onLeftClick={handleScrollLeft} onRightClick={handleScrollRight} />
                     </div>
                     <div className="content-image" ref={contentRef}>
-                        <ImageList images={Images} />
+                        <HighlightsList highlightsImages={ImagesDestaques} />
                     </div>
                 </Card> 
-                <Card height="80vh" width="90%">
-                    <Title>Podcasts Populares</Title>
-                    <TabContent />
-                    <div>
-                        <hr />
-                        <Title>Categorias Populares</Title>
-                        <div className="flex justify-start">
-                            <div className="images-icons">
-                                <BriefcaseIcon className="w-8 h-8" />
-                                <p>Business</p>
-                                </div>
-                                <div className="images-icons">
 
-                                <SparklesIcon className="w-8 h-8" />
-                                <p>SciCast</p>
-                                </div>
-                                <div className="images-icons">
+                <Card height="40vh" width="93%">
+                    <Title>Categorias Populares</Title>
+                    <TabContent />                    
+                </Card>
 
-                                <HeartIcon className="w-8 h-8" />
-                                <p>Saúde</p>
-                            </div>                        
-                        </div>
-                    </div>
-                </Card>   
             </div>
 
             <div className="content-right">
-                <Card height="45vh" width="300px">
-                    <Title>Tocando Agora</Title>
+                <Card height="40vh" width="300px">
+                    <Title className="title-center">Tocando Agora</Title>
+                    <PlayingNow playingNow={PlayNow} />
                 </Card> 
-                <Card height="35vh" width="300px">
-                    <Title>Tocados Recentemente</Title>
+
+                <Card height="30vh" width="300px">
+                    <Title className="title-center">Tocados Recentemente</Title>
                 </Card> 
             </div>
-
         </div>
     );
 }

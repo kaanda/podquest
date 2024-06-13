@@ -1,0 +1,79 @@
+[
+  {
+    "src": "/img/poster/bdobvius.png",
+    "alt": "poster 1",
+    "title": "Poster 1",
+    "description": "This is the first album",
+    "totalDuration": 54
+  },
+  {
+    "src": "/img/poster/cafe-manha.png",
+    "alt": "poster 2",
+    "title": "Poster 2",
+    "description": "This is the second album",
+    "totalDuration": 1.50
+  },
+  {
+    "src": "/img/poster/escafandro-.png",
+    "alt": "poster 3",
+    "title": "Poster 3",
+    "description": "This is the third album",
+    "totalDuration": 20
+  },
+  {
+    "src": "/img/poster/hipster.png",
+    "alt": "poster 4",
+    "title": "Poster 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/poster/durma.png",
+    "alt": "poster 4",
+    "title": "Poster 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/poster/ilustrissima-conversa.png",
+    "alt": "poster 4",
+    "title": "Poster 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/poster/nerdcast.png",
+    "alt": "poster 4",
+    "title": "Poster 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/poster/scicast.png",
+    "alt": "poster 4",
+    "title": "Poster 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/poster/tomai.png",
+    "alt": "poster 4",
+    "title": "Poster 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/poster/durma.png",
+    "alt": "poster 4",
+    "title": "Poster 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/poster/bdobvius.png",
+    "alt": "poster 4",
+    "title": "Poster 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  }
+]

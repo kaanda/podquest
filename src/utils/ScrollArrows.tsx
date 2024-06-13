@@ -4,11 +4,12 @@ import React from 'react';
 interface ScrollArrowsProps {
   onLeftClick: () => void;
   onRightClick: () => void;
+  className?: string;
 }
 
-const ScrollArrows: React.FC<ScrollArrowsProps> = ({ onLeftClick, onRightClick }) => {
+const ScrollArrows: React.FC<ScrollArrowsProps> = ({ onLeftClick, onRightClick, className}) => {
   return (
-    <div className="scroll-arrows">
+    <div className={className ? className : "scroll-arrows"}>
       <button className="arrow" onClick={onLeftClick}>
         <ChevronLeftIcon className="w-5 h-5" />
       </button>

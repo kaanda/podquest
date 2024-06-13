@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ClockIcon } from '@heroicons/react/20/solid';
-import images from '../service/Images.json';
+import ImagesPosters from '../service/Posters.json';
 import ScrollArrows from '@/utils/ScrollArrows';
 
 function TabContent() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollPositions, setScrollPositions] = useState<number[]>([0, 0, 0]);
+  const [scrollPositions, setScrollPositions] = useState<number[]>([0, 0, 0, 0, 0]);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([null, null, null]);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ function TabContent() {
 
   const renderContent = (index: number) => (
     <div ref={setRef(index)} className="content-image">
-      {images.map((image, idx) => (
+      {ImagesPosters.map((image, idx) => (
         <div key={idx} className="tab-image-list">
           <img src={image.src} alt={image.alt} />
           <h2>{image.title}</h2>
@@ -78,7 +78,15 @@ function TabContent() {
   );
 
   const renderScrollArrows = () => (
-    <ScrollArrows onLeftClick={handleScrollLeft} onRightClick={handleScrollRight} />
+    <ScrollArrows className="
+                    flex flex-2  
+                    items-start 
+                    relative 
+                    top-[-40px] 
+                    w-60
+                    left-[1240px]" 
+                  onLeftClick={handleScrollLeft} 
+                  onRightClick={handleScrollRight} />
   );
 
   return (
@@ -101,6 +109,18 @@ function TabContent() {
           onClick={() => setSelectedIndex(2)}
         >
           Business
+        </button>
+        <button
+          className={`px-4 py-2 ${selectedIndex === 3 ? 'border-b-2 font-bold border-black' : 'border-b-2 border-transparent'}`}
+          onClick={() => setSelectedIndex(3)}
+        >
+          SciCast
+        </button>
+        <button
+          className={`px-4 py-2 ${selectedIndex === 4 ? 'border-b-2 font-bold border-black' : 'border-b-2 border-transparent'}`}
+          onClick={() => setSelectedIndex(4)}
+        >
+          Educação
         </button>
       </div>
       {renderScrollArrows()}

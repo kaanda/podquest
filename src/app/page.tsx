@@ -9,7 +9,7 @@ export default function Home() {
     <div className='page'>
       <div className='home'>
         <Header />
-        <strong><h1 className='ml-[80px] text-lg'>DESCOBERTAS DE PODCASTS</h1></strong>
+        <strong><h1 className='ml-[80px] text-xl'>TODOS OS SEUS PODCASTS EM UM SÓ LUGAR</h1></strong>
         <Content />
         <Footer />
       </div>

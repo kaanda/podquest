@@ -1,0 +1,79 @@
+[
+  {
+    "src": "/img/destaques/desenrola.png",
+    "alt": "destaque 1",
+    "title": "destaque 1",
+    "description": "This is the first album",
+    "totalDuration": 54
+  },
+  {
+    "src": "/img/destaques/durma-com-essa.png",
+    "alt": "destaque 2",
+    "title": "destaque 2",
+    "description": "This is the second album",
+    "totalDuration": 1.50
+  },
+  {
+    "src": "/img/destaques/escafandro.png",
+    "alt": "destaque 3",
+    "title": "destaque 3",
+    "description": "This is the third album",
+    "totalDuration": 20
+  },
+  {
+    "src": "/img/destaques/hipster-tec.png",
+    "alt": "destaque 4",
+    "title": "destaque 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/destaques/obvius.png",
+    "alt": "destaque 4",
+    "title": "destaque 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/destaques/picole-limao.png",
+    "alt": "destaque 4",
+    "title": "destaque 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/destaques/desenrola.png",
+    "alt": "destaque 4",
+    "title": "destaque 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/destaques/escafandro.png",
+    "alt": "destaque 4",
+    "title": "destaque 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/destaques/obvius.png",
+    "alt": "destaque 4",
+    "title": "destaque 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/destaques/durma-com-essa.png",
+    "alt": "destaque 4",
+    "title": "destaque 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  },
+  {
+    "src": "/img/destaques/picole-limao.png",
+    "alt": "destaque 4",
+    "title": "destaque 4",
+    "description": "This is the fourth album",
+    "totalDuration": 30
+  }
+]
