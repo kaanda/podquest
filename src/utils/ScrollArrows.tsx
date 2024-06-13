@@ -2,8 +2,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import React from 'react';
 
 interface ScrollArrowsProps {
-  onLeftClick?: () => void;
-  onRightClick?: () => void;
+  onLeftClick: () => void;
+  onRightClick: () => void;
 }
 
 const ScrollArrows: React.FC<ScrollArrowsProps> = ({ onLeftClick, onRightClick }) => {

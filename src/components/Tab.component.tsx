@@ -1,93 +1,114 @@
-'use client'
-import React, { useRef, useState } from 'react'
-import { ClockIcon } from '@heroicons/react/20/solid'
-import images from '../service/Images.json'
-import ScrollArrows from '@/utils/ScrollArrows'
+import React, { useEffect, useRef, useState } from 'react';
+import { ClockIcon } from '@heroicons/react/20/solid';
+import images from '../service/Images.json';
+import ScrollArrows from '@/utils/ScrollArrows';
 
 function TabContent() {
-    const [selectedIndex, setSelectedIndex] = useState(0)
-    const contentRef = useRef<HTMLDivElement>(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollPositions, setScrollPositions] = useState<number[]>([0, 0, 0]);
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([null, null, null]);
+
+  useEffect(() => {
+    const handleScroll = (index: number) => {
+      if (contentRefs.current[index]) {
+        const { scrollLeft } = contentRefs.current[index]!;
+        setScrollPositions(prevPositions => {
+          const updatedPositions = [...prevPositions];
+          updatedPositions[index] = scrollLeft;
+          return updatedPositions;
+        });
+      }
+    };
+
+    const onScroll = () => {
+      handleScroll(selectedIndex);
+    };
+
+    if (contentRefs.current[selectedIndex]) {
+      contentRefs.current[selectedIndex]!.addEventListener('scroll', onScroll);
+    }
+
+    return () => {
+      if (contentRefs.current[selectedIndex]) {
+        contentRefs.current[selectedIndex]!.removeEventListener('scroll', onScroll);
+      }
+    };
+  }, [selectedIndex]);
 
   const handleScrollLeft = () => {
-    if (contentRef.current) {
-      contentRef.current.scrollLeft -= 100; // Adjust as needed
+    if (contentRefs.current[selectedIndex]) {
+      contentRefs.current[selectedIndex]!.scrollLeft -= 200; 
+      setScrollPositions(prevPositions => {
+        const updatedPositions = [...prevPositions];
+        updatedPositions[selectedIndex] = contentRefs.current[selectedIndex]!.scrollLeft;
+        return updatedPositions;
+      });
     }
   };
 
   const handleScrollRight = () => {
-    if (contentRef.current) {
-      contentRef.current.scrollLeft += 100; // Adjust as needed
+    if (contentRefs.current[selectedIndex]) {
+      contentRefs.current[selectedIndex]!.scrollLeft += 200; 
+      setScrollPositions(prevPositions => {
+        const updatedPositions = [...prevPositions];
+        updatedPositions[selectedIndex] = contentRefs.current[selectedIndex]!.scrollLeft;
+        return updatedPositions;
+      });
     }
   };
 
-    const renderContent = () => {
-      switch (selectedIndex) {
-        case 0:
-          return (
-            <>
-              {images.map((image, index) => (
-                <div key={index} className="tab-image-list">
-                    <img src={image.src} alt={image.alt} />                 
-                    <h2>{image.title}</h2>
-                    <p>{image.description}</p>
-                    <p><ClockIcon className="w-3 h-3 mr-1" />{Math.floor(image.totalDuration / 60)} min</p>
-                </div>
-              ))}
-            </>
-          )
-        case 1:
-          return (
-            <>
-               {images.map((image, index) => (
-                <div key={index} className="tab-image-list">
-                    <img src={image.src} alt={image.alt} />                 
-                    <h2>{image.title}</h2>
-                    <p>{image.description}</p>
-                    <p><ClockIcon className="w-3 h-3 mr-1" />{Math.floor(image.totalDuration / 60)} min</p>
-                </div>
-              ))}
-            </>
-          )
-        case 2:
-          return <div>Content 3</div>
-        default:
-          return null
-      }
+  const setRef = (index: number) => (el: HTMLDivElement | null) => {
+    contentRefs.current[index] = el;
+    if (el && scrollPositions[index] !== el.scrollLeft) {
+      el.scrollLeft = scrollPositions[index];
     }
-  
-    return (
-      <div className="tab-relative">
-        <div className="flex space-x-2 border-b border-gray-200" >
-          <button 
-            className={`px-4 py-2 ${selectedIndex === 0 ? 'border-b-2 font-bold border-black' : 'border-b-2 border-transparent'}`}
-            onClick={() => setSelectedIndex(0)}
-          >
-            Todos
-          </button>
-          <button 
-            className={`px-4 py-2 ${selectedIndex === 1 ? 'border-b-2 font-bold border-black' : 'border-b-2 border-transparent'}`}
-            onClick={() => setSelectedIndex(1)}
-          >
-            Saúde
-          </button>
-          <button 
-            className={`px-4 py-2 ${selectedIndex === 2 ? 'border-b-2 font-bold border-black' : 'border-b-2 border-transparent'}`}
-            onClick={() => setSelectedIndex(2)}
-          >
-            Business
-          </button>
-        <div className="scroll-arrows">
-          <ScrollArrows onLeftClick={handleScrollLeft} onRightClick={handleScrollRight} />
+  };
+
+  const renderContent = (index: number) => (
+    <div ref={setRef(index)} className="content-image">
+      {images.map((image, idx) => (
+        <div key={idx} className="tab-image-list">
+          <img src={image.src} alt={image.alt} />
+          <h2>{image.title}</h2>
+          <p>{image.description}</p>
+          <p><ClockIcon className="w-3 h-3 mr-1" />{Math.floor(image.totalDuration / 60)} min</p>
         </div>
-        </div>
-          {/* <ScrollArrows /> */}
-          <div className="tab-images">
-        <div className="content-image" ref={contentRef}>
-          {renderContent()}
-        </div>
+      ))}
+    </div>
+  );
+
+  const renderScrollArrows = () => (
+    <ScrollArrows onLeftClick={handleScrollLeft} onRightClick={handleScrollRight} />
+  );
+
+  return (
+    <div className="tab-relative">
+      <div className="flex space-x-2 border-b border-gray-200">
+        <button
+          className={`px-4 py-2 ${selectedIndex === 0 ? 'border-b-2 font-bold border-black' : 'border-b-2 border-transparent'}`}
+          onClick={() => setSelectedIndex(0)}
+        >
+          Todos
+        </button>
+        <button
+          className={`px-4 py-2 ${selectedIndex === 1 ? 'border-b-2 font-bold border-black' : 'border-b-2 border-transparent'}`}
+          onClick={() => setSelectedIndex(1)}
+        >
+          Saúde
+        </button>
+        <button
+          className={`px-4 py-2 ${selectedIndex === 2 ? 'border-b-2 font-bold border-black' : 'border-b-2 border-transparent'}`}
+          onClick={() => setSelectedIndex(2)}
+        >
+          Business
+        </button>
+      </div>
+      {renderScrollArrows()}
+      <div className="tab-images">
+        {renderContent(selectedIndex)}
       </div>
     </div>
   );
 }
-  
-  export default TabContent
+
+export default TabContent;

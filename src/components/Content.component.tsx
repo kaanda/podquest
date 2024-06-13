@@ -7,6 +7,7 @@ import Images from "../service/Images.json"
 import TrendingWeek from "./TrendingWeek.component";
 import TabContent from "./Tab.component";
 import ScrollArrows from "@/utils/ScrollArrows";
+import { BriefcaseIcon, HeartIcon, SparklesIcon } from "@heroicons/react/20/solid";
 
 export default function Content() {
 
@@ -43,9 +44,9 @@ export default function Content() {
                     <div className="card-title-select" >
                         <Title>Destaques Podcasts em</Title>
                         <select className="select">
-                            <option value="mpb">MPB</option>
-                            <option value="jazz">Jazz</option>
-                            <option value="rock">Rock</option>
+                            <option value="mpb">SciCast</option>
+                            <option value="jazz">Educação</option>
+                            <option value="rock">Business</option>
                             <option value="inspiracao">Inspiração</option>
                         </select>                    
                         
@@ -58,6 +59,26 @@ export default function Content() {
                 <Card height="80vh" width="90%">
                     <Title>Podcasts Populares</Title>
                     <TabContent />
+                    <div>
+                        <hr />
+                        <Title>Categorias Populares</Title>
+                        <div className="flex justify-start">
+                            <div className="images-icons">
+                                <BriefcaseIcon className="w-8 h-8" />
+                                <p>Business</p>
+                                </div>
+                                <div className="images-icons">
+
+                                <SparklesIcon className="w-8 h-8" />
+                                <p>SciCast</p>
+                                </div>
+                                <div className="images-icons">
+
+                                <HeartIcon className="w-8 h-8" />
+                                <p>Saúde</p>
+                            </div>                        
+                        </div>
+                    </div>
                 </Card>   
             </div>
 
