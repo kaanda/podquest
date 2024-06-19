@@ -1,14 +1,14 @@
 'use client'
 import React from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid"; // Verifique a versão correta
-import { BellIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, MoonIcon } from "@heroicons/react/20/solid"; // Verifique a versão correta
+import { BellIcon, SunIcon } from "@heroicons/react/24/outline";
 import DropdownMenu from "./DropdownMenu.component";
 
 
 export default function Header() {
 
     const handleAlert = () => {
-       alert("Você tem *** notificações");
+       alert("Você tem *** notificações"); 
     }
 
     return (
@@ -24,10 +24,18 @@ export default function Header() {
                 />
             </div>
             <div className="dropdown-menu">
-            <button onClick={() => handleAlert()}>
-                <BellIcon className="w-8 h-8 mt-[2px]"/>
-            </button>
+                <button onClick={() => handleAlert()}>
+                    <BellIcon className="w-6 h-6 mt-[2px]"/>
+                </button>
                 <DropdownMenu />
+            </div>
+            <div>
+                <button>
+                    <MoonIcon className="w-5 h-5" />
+                </button>
+                <button>
+                    <SunIcon className="w-5 h-5" />
+                </button>
             </div>
         </div>
     );
