@@ -1,3 +1,8 @@
+import { ArtistModel } from "./models/artist.model.js";
+import { ShowModel } from "./models/show.model.js";
+import { AlbumModel } from "./models/album.model.js";
+import { TracksByAlbumModel } from "./models/tracksByAlbum.model.js";
+
 //criando um objeto com as informações de autenticação da API do Spotify
 const api = {
     client_id: "e738b44aa0234547aa3318e89e682bf8",
@@ -46,6 +51,7 @@ export const getAudiobookId = async (audiobook_id) => {
     return { name: audiobook.name, id: audiobook.id };
 }
 
+//5CG9X521RDFWCuAhlo6QoR
 export const artistInfo = async (artist_id) => {
     const { access_token } = await getToken();
     const response = await fetch(`https://api.spotify.com/v1/artists/${artist_id}`, {
@@ -54,7 +60,8 @@ export const artistInfo = async (artist_id) => {
     });
 
     const artist = await response.json();
-    return { name: artist.name, id: artist.id };
+    // add model do artist
+    return new ArtistModel(artist);
 }
 
 //2p0Vx75OmfsXktyLBuLuSf
@@ -66,16 +73,7 @@ export const getShow = async (show_id) => {
     });
 
     const show = await response.json();
-    return { description: show.description, 
-        id: show.id, 
-        name: show.name, 
-        publisher: show.publisher, 
-        episodes: show.episodes.items.map(episode => ({
-            name: episode.name, 
-            external_urls: episode.external_urls.spotify,
-            id: episode.id
-        })     
-    )}
+    return new ShowModel(show);
 }
 
 export const getGenres = async () => {
@@ -87,4 +85,45 @@ export const getGenres = async () => {
     const genres = await response.json();
     return { genres };
 }
+
+//3b4E89rxzZQ9zkhgKpj8N4
+export const getAlbumId = async (album_id) => {
+    const { access_token } = await getToken();
+    const response = await fetch(`https://api.spotify.com/v1/albums/${album_id}`, {
+        method: 'GET',
+        headers: { 'Authorization': `Bearer ${access_token}` },
+    });
+
+    const album = await response.json();
+    return new AlbumModel(album);
+}
+
+//3b4E89rxzZQ9zkhgKpj8N4
+const getTracksByAlbumId = async (album_id) => {
+    const { access_token } = await getToken();
+    const response = await fetch(`https://api.spotify.com/v1/albums/${album_id}/tracks`, {
+        method: 'GET',
+        headers: { 'Authorization': `Bearer ${access_token}` },
+    });
+    const tracks = await response.json();
+    return tracks.items.map(track => new TracksByAlbumModel(track));
+}
+
+//5CG9X521RDFWCuAhlo6QoR
+export const getAlbumByArtistId = async (artist_id) => {
+    const { access_token } = await getToken();
+    const response = await fetch(`https://api.spotify.com/v1/artists/${artist_id}/albums`, {
+        method: 'GET',
+        headers: { 'Authorization': `Bearer ${access_token}` },
+    });
+    const albumsItems = await response.json();
+    // const albumsItems = response.items;
+    console.log('albumsItem', albumsItems)
+    const mountAlbums = await Promise.all(albumsItems.items.map(async (album) => {
+        const albumTracks = await getTracksByAlbumId(album.id);
+        return { name: album.name, id: album.id, tracks: albumTracks };
+}));
+    return mountAlbums
+}
+
 

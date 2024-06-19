@@ -1,5 +1,5 @@
 import express from "express"
-import { getTrackInfo, getAudiobookId, artistInfo, getGenres, getShow } from "./podquest-service.js"
+import { getTrackInfo, artistInfo, getGenres, getShow, getAlbumId, getAlbumByArtistId } from "./podquest-service.js"
 
 const podquestRouter = express.Router()
 
@@ -10,13 +10,13 @@ podquestRouter.get('/track-info', async (req, res) => {
     res.json(trackInfo)
 })
 
-podquestRouter.get('/audiobook/:audiobook_id', async (req, res) => {
-    const { audiobook_id } = req.params;
-    if (!audiobook_id) {
-        res.status(400).send('Precisa ser passado o id do audiobook');
+podquestRouter.get('/album/:album_id', async (req, res) => {
+    const { album_id } = req.params;
+    if (!album_id) {
+        res.status(400).send('Precisa ser passado o id do album');
     }
-    const audiobook = await getAudiobookId(audiobook_id);
-    res.json(audiobook);
+    const album = await getAlbumId(album_id);
+    res.json(album);
 });
 
 podquestRouter.get('/artist-info/:artist_id', async (req, res) => {
@@ -35,9 +35,7 @@ podquestRouter.get('/show/:show_id', async (req, res) => {
     if (!show_id){
         res.status(400).send('Add um id válido para o podcast desejado')
     }
-
     const show = await getShow(show_id);
-    console.log('show', show)
     res.json(show);
 })
 
@@ -48,5 +46,16 @@ podquestRouter.get('/genres', async (req, res) => {
     }
     res.json(genres);
 })
+
+podquestRouter.get('/album-artist/:artist_id', async (req, res) => {
+    const { artist_id } = req.params;
+    
+    if (!artist_id) {
+      res.status(400).send('Add um id válido do artista')
+    }
+
+    const artist = await getAlbumByArtistId(artist_id);
+    res.json(artist);
+});
 
 export { podquestRouter }
