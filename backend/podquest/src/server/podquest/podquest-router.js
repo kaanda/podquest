@@ -1,5 +1,5 @@
 import express from "express"
-import { getTrackInfo, artistInfo, getGenres, getShow, getAlbumId, getAlbumByArtistId } from "./podquest-service.js"
+import { getTrackInfo, artistInfo, getGenresMusic, getShow, getAlbumId, getAlbumsByArtistId } from "./podquest-service.js"
 
 const podquestRouter = express.Router()
 
@@ -39,22 +39,22 @@ podquestRouter.get('/show/:show_id', async (req, res) => {
     res.json(show);
 })
 
-podquestRouter.get('/genres', async (req, res) => {
-    const genres = await getGenres();
-    if (!genres) {
+podquestRouter.get('/genresMusic', async (req, res) => {
+    const genresMusic = await getGenresMusic();
+    if (!genresMusic) {
         res.status(404).send('Nenhum gênero encontrado');
     }
-    res.json(genres);
+    res.json(genresMusic);
 })
 
-podquestRouter.get('/album-artist/:artist_id', async (req, res) => {
+podquestRouter.get('/albums-artist/:artist_id', async (req, res) => {
     const { artist_id } = req.params;
     
     if (!artist_id) {
       res.status(400).send('Add um id válido do artista')
     }
 
-    const artist = await getAlbumByArtistId(artist_id);
+    const artist = await getAlbumsByArtistId(artist_id);
     res.json(artist);
 });
 
